@@ -6,14 +6,14 @@ import { fetchAllContact } from '../../redux/contacts/operations-contact';
 import { selectContact } from 'redux/contacts/selector-contacts';
 import { deleteContact } from '../../redux/contacts/operations-contact';
 import Loader from 'components/Loader';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const ContactList = () => {
   const contacts = useSelector(selectContact);
   const filter = useSelector(state => state.contacts.filter);
-  const isLoading = useSelector(state => state.contacts.isLoading)
+  const isLoading = useSelector(state => state.contacts.isLoading);
   const dispatch = useDispatch();
-
-
 
   useEffect(() => {
     dispatch(fetchAllContact());
@@ -23,27 +23,28 @@ const ContactList = () => {
   const filteredContacts = contacts.filter(user =>
     user.name.toLowerCase().includes(filter.toLowerCase())
   );
-  
+
   if (contacts.length === 0) {
     return;
   }
 
   return (
     <div>
-      {isLoading && <Loader/>}
+      {isLoading && <Loader />}
       <ul className={s.list}>
         {filteredContacts.map(({ name, number, id }) => (
           <li className={s.item} key={id}>
             <p className={s.text}>
               {name} <span className={s.tel}>Tel: {number}</span>
             </p>
-            <button
-              className={s.btn}
+            <Button
+              variant="contained"
+              startIcon={<DeleteIcon />}
               type="button"
               onClick={() => dispatch(deleteContact(id))}
             >
               Delete
-            </button>
+            </Button>
           </li>
         ))}
       </ul>

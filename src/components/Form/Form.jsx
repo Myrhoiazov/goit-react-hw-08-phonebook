@@ -5,6 +5,7 @@ import s from './Form.module.css';
 import { toast } from 'react-toastify';
 import { selectContact } from 'redux/contacts/selector-contacts';
 import Loader from 'components/Loader';
+import Button from '@mui/material/Button';
 
 // const shortid = require('shortid');
 
@@ -40,7 +41,7 @@ const Form = () => {
     const hasUserContacts = contacts.some(user => user.name === name);
 
     if (hasUserContacts) {
-      toast.error(`${name} is already in contacts`);
+      toast.warning(`${name} is already in contacts`);
       return;
     }
 
@@ -80,9 +81,13 @@ const Form = () => {
           />
         </label>
 
-        <button className={s.btn} type="submit">
+        <Button
+          disabled={name && number ? false : true}
+          variant="contained"
+          type="submit"
+        >
           Add contact
-        </button>
+        </Button>
       </form>
     </>
   );
