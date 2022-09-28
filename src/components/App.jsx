@@ -13,7 +13,7 @@ export const App = () => {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/home" element={<HomePage />} />
+            <Route index element={<HomePage />} />
             <Route path="/contacts" element={<ContactPage />} />
           </Route>
         </Routes>

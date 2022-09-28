@@ -1,0 +1,43 @@
+.header {
+  background-color: #032541;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 70px;
+  padding: 5px;
+
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  border-radius: 8px;
+
+  transition: all ease-in 150ms;
+
+  &:hover {
+    color: white;
+    background-color: rgb(0, 0, 0);
+    text-decoration: none;
+  }
+
+  &.active {
+    color: white;
+    background-color: rgb(0, 0, 0);
+    text-decoration: none;
+  }
+}

@@ -1,50 +1,30 @@
 import Breadcrumbs from '@mui/material/Breadcrumbs';
-import { Link } from 'react-router-dom';
-
-// import Link from '@mui/material/Link';
+import { NavLink } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
-import GrainIcon from '@mui/icons-material/Grain';
-import { Typography } from '@mui/material';
+import s from '../Nav/Nav.module.scss';
 
-// function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-//   event.preventDefault();
-//   console.info('You clicked a breadcrumb.');
-// }
 
 const Nav = () => {
+  const getActiveClassName = ({ isActive }) => {
+    return isActive ? `${s.item} ${s.active}` : s.item;
+  };
+
   return (
     <div
-      role="presentation"
-      // onClick={handleClick}
-      sx={{ display: 'flex', alignItems: 'center' }}
+    // role="presentation"
+    // // onClick={handleClick}
+    // sx={{ display: 'flex', alignItems: 'center' }}
     >
       <Breadcrumbs aria-label="breadcrumb">
-        <Link
-          underline="hover"
-          sx={{ display: 'flex', alignItems: 'center' }}
-          color="inherit"
-          to="/home"
-        >
+        <NavLink end className={getActiveClassName} to="/">
           <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
           HOME
-        </Link>
-        <Link
-          underline="hover"
-          sx={{ display: 'flex', alignItems: 'center' }}
-          color="inherit"
-          to="/contacts"
-        >
+        </NavLink>
+        <NavLink className={getActiveClassName} to="/contacts">
           <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
           Contact
-        </Link>
-        <Typography
-          sx={{ display: 'flex', alignItems: 'center' }}
-          color="text.primary"
-        >
-          <GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-          Breadcrumb
-        </Typography>
+        </NavLink>
       </Breadcrumbs>
     </div>
   );
