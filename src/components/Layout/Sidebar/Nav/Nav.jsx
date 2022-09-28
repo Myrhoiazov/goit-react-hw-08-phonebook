@@ -1,9 +1,8 @@
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import { NavLink } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
-import WhatshotIcon from '@mui/icons-material/Whatshot';
+import CallSharpIcon from '@mui/icons-material/CallSharp';
 import s from '../Nav/Nav.module.scss';
-
 
 const Nav = () => {
   const getActiveClassName = ({ isActive }) => {
@@ -22,8 +21,8 @@ const Nav = () => {
           HOME
         </NavLink>
         <NavLink className={getActiveClassName} to="/contacts">
-          <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-          Contact
+          <CallSharpIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+          CONTACT
         </NavLink>
       </Breadcrumbs>
     </div>
