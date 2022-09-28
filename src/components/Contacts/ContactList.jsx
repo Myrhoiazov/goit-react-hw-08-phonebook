@@ -40,6 +40,7 @@ const ContactList = () => {
             <Button
               variant="contained"
               startIcon={<DeleteIcon />}
+              disabled={isLoading ? true : false}
               type="button"
               onClick={() => dispatch(deleteContact(id))}
             >
