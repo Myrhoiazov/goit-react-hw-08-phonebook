@@ -6,6 +6,8 @@ import Loader from './Loader/index.js';
 import Layout from './Layout/Layout.jsx';
 import HomePage from 'pages/HomePage';
 import ContactPage from 'pages/ContactPage';
+import LoginPage from '../pages/LoginPage';
+import Registration from '../pages/Registration';
 
 export const App = () => {
   return (
@@ -15,6 +17,8 @@ export const App = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="/contacts" element={<ContactPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/registration" element={<Registration />} />
           </Route>
         </Routes>
         <ToastContainer />

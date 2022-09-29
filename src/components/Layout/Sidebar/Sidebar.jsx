@@ -1,10 +1,14 @@
-import Nav from "./Nav";
+import Login from './Login';
+import Nav from './Nav';
 
 const Sidebar = () => {
   return (
-    <>
-      <Nav />
-    </>
+    <div>
+      <div>
+        <Nav />
+        <Login />
+      </div>
+    </div>
   );
 };
 
