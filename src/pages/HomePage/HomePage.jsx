@@ -1,7 +1,11 @@
+import { Container } from '@mui/system';
+
 const HomePage = () => {
   return (
     <>
-      <h1>HomePage</h1>
+      <Container>
+        <h1>HomePage</h1>
+      </Container>
     </>
   );
 };

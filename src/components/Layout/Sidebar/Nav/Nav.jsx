@@ -1,4 +1,3 @@
-import Breadcrumbs from '@mui/material/Breadcrumbs';
 import { NavLink } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import CallSharpIcon from '@mui/icons-material/CallSharp';
@@ -12,7 +11,7 @@ const Nav = () => {
 
   return (
     <div>
-      <Breadcrumbs aria-label="breadcrumb">
+      <div className={s.nav}>
         <NavLink end className={getActiveClassName} to="/">
           <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
           HOME
@@ -22,7 +21,7 @@ const Nav = () => {
           CONTACT
         </NavLink>
         <UserMenu />
-      </Breadcrumbs>
+      </div>
     </div>
   );
 };
