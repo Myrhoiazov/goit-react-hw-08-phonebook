@@ -1,70 +1,59 @@
 import { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { addContact } from 'redux/contacts/operations-contact';
 import s from './Registration.module.css';
-// import { toast } from 'react-toastify';
-// import { selectContact } from 'redux/contacts/selector-contacts';
 // import Loader from 'components/Loader';
 import Button from '@mui/material/Button';
+import { createUserService } from 'services/usersApi';
+import { toast } from 'react-toastify';
+import { loginThunk } from 'redux/auth/thunk.auth';
+import { useDispatch } from 'react-redux';
+import { omit } from 'lodash';
+import { useNavigate } from 'react-router-dom';
 
 const Registration = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const initialValue = {
+    name: '',
+    email: '',
+    password: '',
+  };
 
-  // const dispatch = useDispatch();
-  // const contacts = useSelector(selectContact);
-  // const isLoading = useSelector(state => state.contacts.isLoading);
+  const [user, setUser] = useState(initialValue);
+  // const [isLoader, setIsLoader] = useState(false);
 
-  // const handleChangeUser = ev => {
-  //   const { name, value } = ev.target;
+  const handleChangeUser = ev => {
+    const { name, value } = ev.target;
+    setUser(prev => ({ ...prev, [name]: value }));
+  };
 
-  //   switch (name) {
-  //     case 'name':
-  //       setUserName(value);
-  //       // eslint-disable-next-line
-  //       break;
+  const handleSubmit = ev => {
+    ev.preventDefault();
 
-  //     case 'number':
-  //       setNumber(value);
-  //       // eslint-disable-next-line
-  //       break;
-
-  //     default:
-  //       return;
-  //   }
-  // };
-
-  // const handleAddUser = e => {
-  //   e.preventDefault();
-
-  //   const hasUserContacts = contacts.some(user => user.name === name);
-
-  //   if (hasUserContacts) {
-  //     toast.warning(`${name} is already in contacts`);
-  //     return;
-  //   }
-
-  //   dispatch(addContact({ name, number }));
-  //   setNumber('');
-  //   setUserName('');
-  // };
+    createUserService(user)
+      .then(() => {
+        toast.success('Success');
+        dispatch(loginThunk(omit(user, 'name'))).unwrap();
+        setUser(initialValue);
+      })
+      .then(() => navigate('/', { replace: true }))
+      .catch(() => toast.error('warning'));
+  };
 
   return (
     <>
-      {/* {isLoading && <Loader />} */}
-      <form className={s.form} onSubmit={console.log()}>
+      {/* {isLoader && <Loader />} */}
+      <form className={s.form} onSubmit={handleSubmit}>
         <label>
           <span className={s.label}>Name</span>
           <input
             className={s.input}
             type="text"
-            // value={name}
+            value={user.name}
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
-            // onChange={handleChangeUser}
+            onChange={handleChangeUser}
           />
         </label>
         <label>
@@ -72,12 +61,12 @@ const Registration = () => {
           <input
             className={s.input}
             type="email"
-            name="number"
-            // value={number}
+            name="email"
+            value={user.email}
             // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             // title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
-            // onChange={handleChangeUser}
+            onChange={handleChangeUser}
           />
         </label>
         <label>
@@ -86,19 +75,15 @@ const Registration = () => {
             className={s.input}
             type="password"
             name="password"
-            // value={number}
+            value={user.password}
             // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             // title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
-            // onChange={handleChangeUser}
+            onChange={handleChangeUser}
           />
         </label>
 
-        <Button
-          disabled={name && email && password ? false : true}
-          variant="contained"
-          type="submit"
-        >
+        <Button disabled={false} variant="contained" type="submit">
           Registration
         </Button>
       </form>

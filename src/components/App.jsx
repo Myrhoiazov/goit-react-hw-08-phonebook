@@ -1,15 +1,23 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import Loader from './Loader/index.js';
 import Layout from './Layout/Layout.jsx';
 import HomePage from 'pages/HomePage';
 import ContactPage from 'pages/ContactPage';
 import LoginPage from '../pages/LoginPage';
 import Registration from '../pages/Registration';
+import { useDispatch } from 'react-redux';
+import { getProfileThunk } from 'redux/profile/thunk.profile.js';
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProfileThunk());
+  }, [dispatch]);
+
   return (
     <BrowserRouter basename="/goit-react-hw-08-phonebook">
       <Suspense fallback={<Loader />}>

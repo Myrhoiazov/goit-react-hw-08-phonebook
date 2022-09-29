@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import CallSharpIcon from '@mui/icons-material/CallSharp';
 import s from '../Nav/Nav.module.scss';
+import UserMenu from 'components/UserMenu';
 
 const Nav = () => {
   const getActiveClassName = ({ isActive }) => {
@@ -10,11 +11,7 @@ const Nav = () => {
   };
 
   return (
-    <div
-    // role="presentation"
-    // // onClick={handleClick}
-    // sx={{ display: 'flex', alignItems: 'center' }}
-    >
+    <div>
       <Breadcrumbs aria-label="breadcrumb">
         <NavLink end className={getActiveClassName} to="/">
           <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
@@ -24,6 +21,7 @@ const Nav = () => {
           <CallSharpIcon sx={{ mr: 0.5 }} fontSize="inherit" />
           CONTACT
         </NavLink>
+        <UserMenu />
       </Breadcrumbs>
     </div>
   );
