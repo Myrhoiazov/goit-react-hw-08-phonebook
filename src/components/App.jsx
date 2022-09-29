@@ -8,15 +8,19 @@ import HomePage from 'pages/HomePage';
 import ContactPage from 'pages/ContactPage';
 import LoginPage from '../pages/LoginPage';
 import Registration from '../pages/Registration';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getProfileThunk } from 'redux/profile/thunk.profile.js';
+import { selectAuth } from 'redux/auth/selector.auth.js';
 
 export const App = () => {
   const dispatch = useDispatch();
+  const status = useSelector(selectAuth);
 
   useEffect(() => {
-    dispatch(getProfileThunk());
-  }, [dispatch]);
+    if (status) {
+      dispatch(getProfileThunk());
+    }
+  }, [dispatch, status]);
 
   return (
     <BrowserRouter basename="/goit-react-hw-08-phonebook">
