@@ -4,14 +4,14 @@ import Sidebar from './Sidebar';
 
 const Layout = () => {
   return (
-    <>
+    <div>
       <Container>
         <Sidebar />
         <div>
           <Outlet />
         </div>
       </Container>
-    </>
+    </div>
   );
 };
 
