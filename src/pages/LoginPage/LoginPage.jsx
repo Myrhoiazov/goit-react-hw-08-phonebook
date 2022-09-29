@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from 'redux/auth/thunk.auth';
 import s from './Login.module.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const LoginPage = () => {
@@ -61,6 +61,7 @@ const LoginPage = () => {
             onChange={handleChangeUser}
           />
         </label>
+        <Link className={s.link} to="/registration">Dont have account?</Link>
 
         <Button
           disabled={user.email && user.password ? false : true}

@@ -13,7 +13,6 @@ const Login = () => {
       <Box sx={{ flexGrow: 1 }}>
         <Toolbar>
           <NavLink to="/login" className={getActiveClassName}>
-            {' '}
             Login
           </NavLink>
           <NavLink to="/registration" className={getActiveClassName}>

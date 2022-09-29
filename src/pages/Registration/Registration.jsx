@@ -7,7 +7,8 @@ import { toast } from 'react-toastify';
 import { loginThunk } from 'redux/auth/thunk.auth';
 import { useDispatch } from 'react-redux';
 import { omit } from 'lodash';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Loader from 'components/Loader';
 
 const Registration = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const Registration = () => {
   };
 
   const [user, setUser] = useState(initialValue);
-  // const [isLoader, setIsLoader] = useState(false);
+  const [isLoader, setIsLoader] = useState(false);
 
   const handleChangeUser = ev => {
     const { name, value } = ev.target;
@@ -29,9 +30,11 @@ const Registration = () => {
   const handleSubmit = ev => {
     ev.preventDefault();
 
+    setIsLoader(true);
     createUserService(user)
       .then(() => {
         toast.success('Success');
+        setIsLoader(false);
         dispatch(loginThunk(omit(user, 'name'))).unwrap();
         setUser(initialValue);
       })
@@ -41,7 +44,7 @@ const Registration = () => {
 
   return (
     <>
-      {/* {isLoader && <Loader />} */}
+      {isLoader && <Loader />}
       <form className={s.form} onSubmit={handleSubmit}>
         <label>
           <span className={s.label}>Name</span>
@@ -63,8 +66,6 @@ const Registration = () => {
             type="email"
             name="email"
             value={user.email}
-            // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            // title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
             onChange={handleChangeUser}
           />
@@ -76,14 +77,19 @@ const Registration = () => {
             type="password"
             name="password"
             value={user.password}
-            // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            // title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
             onChange={handleChangeUser}
           />
         </label>
+        <Link className={s.link} to="/login">
+          Already has account?
+        </Link>
 
-        <Button disabled={false} variant="contained" type="submit">
+        <Button
+          disabled={user.name && user.password && user.email ? false : true}
+          variant="contained"
+          type="submit"
+        >
           Registration
         </Button>
       </form>

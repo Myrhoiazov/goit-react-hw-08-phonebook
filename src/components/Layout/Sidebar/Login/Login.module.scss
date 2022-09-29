@@ -12,7 +12,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 0;
+  padding: 10px 15px;
 }
 
 .item {
@@ -21,13 +21,18 @@
   justify-content: center;
   text-decoration: none;
   min-width: 70px;
-  padding: 5px 10px ;
+  padding: 10px 15px;
+  margin-right: 30px;
 
   font-size: 14px;
   color: rgb(0, 0, 0);
   border-radius: 8px;
-
   transition: all ease-in 150ms;
+
+  &:last-child{
+    margin-right: 0;
+
+  }
 
   &:hover {
     color: white;
