@@ -1,19 +1,12 @@
-.header {
-  background-color: #032541;
-}
-
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px;
-}
 
-.nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 15px;
 }
+
 
 .item {
   display: inline-flex;

@@ -10,7 +10,7 @@ const Nav = () => {
   };
 
   return (
-    <div>
+    <div className={s.wrapper}>
       <div className={s.nav}>
         <NavLink end className={getActiveClassName} to="/">
           <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />

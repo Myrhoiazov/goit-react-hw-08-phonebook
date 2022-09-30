@@ -1,28 +1,21 @@
-.header {
-  background-color: #032541;
-}
-
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px;
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 0;
-  min-width: 800px;
 }
 
 .item {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   min-width: 100px;
-  padding: 10px 10px ;
+  padding: 10px 10px;
 
   font-size: 14px;
   color: rgb(0, 0, 0);

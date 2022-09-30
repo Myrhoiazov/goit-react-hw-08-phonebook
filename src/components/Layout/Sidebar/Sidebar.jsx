@@ -1,14 +1,14 @@
 import { useSelector } from 'react-redux';
-import Toolbar from '@mui/material/Toolbar';
 import Login from './Login';
 import Nav from './Nav';
+import s from './Sidebar.module.scss'
 
 const Sidebar = () => {
   const status = useSelector(state => state.auth.status);
   return (
-    <Toolbar>
+    <div className={s.wrapper}>
       <div>{status ? <Nav /> : <Login />}</div>
-    </Toolbar>
+    </div>
   );
 };
 

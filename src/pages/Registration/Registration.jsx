@@ -43,7 +43,7 @@ const Registration = () => {
   };
 
   return (
-    <>
+    <div className={s.wrapper}>
       {isLoader && <Loader />}
       <form className={s.form} onSubmit={handleSubmit}>
         <label>
@@ -93,7 +93,7 @@ const Registration = () => {
           Registration
         </Button>
       </form>
-    </>
+    </div>
   );
 };
 

@@ -1,16 +1,16 @@
 import FilterList from '../../components/Filter/FilterList';
-import Container from '../../components/Container/Container';
 import ContactList from 'components/Contacts/ContactList';
 import Form from '../../components/Form/Form';
+import s from './ContactPage.module.scss'
 
 const ContactPage = () => {
   return (
     <>
-      <Container>
+      <div className={s.wrapper}>
         <Form />
         <FilterList />
         <ContactList />
-      </Container>
+      </div>
     </>
   );
 };

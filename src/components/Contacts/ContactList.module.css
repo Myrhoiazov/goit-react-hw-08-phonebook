@@ -1,7 +1,13 @@
+.wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .list {
   box-sizing: border-box;
-
-  width: 400px;
+  width: 500px;
   list-style: none;
 
   margin: 0;
@@ -23,6 +29,7 @@
   display: inline-block;
   font-size: 12px;
   font-weight: 400;
+  margin-left: 40px;
 }
 
 .btn {

@@ -34,7 +34,7 @@ const ContactList = () => {
   }
 
   return (
-    <div>
+    <div className={s.wrapper}>
       {isLoading && <Loader />}
       <ul className={s.list}>
         {filteredContacts.map(({ name, number, id }) => (

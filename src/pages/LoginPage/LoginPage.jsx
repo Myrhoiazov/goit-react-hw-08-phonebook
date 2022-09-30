@@ -36,7 +36,7 @@ const LoginPage = () => {
   };
 
   return (
-    <>
+    <div className={s.wrapper}>
       {/* {isLoader && <Loader />} */}
       <form className={s.form} onSubmit={handleSubmit}>
         <label>
@@ -71,7 +71,7 @@ const LoginPage = () => {
           Log In
         </Button>
       </form>
-    </>
+    </div>
   );
 };
 

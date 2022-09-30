@@ -1,4 +1,4 @@
-import Container  from '../Container/Container';
+import Container from '../Container/Container';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 
@@ -7,9 +7,7 @@ const Layout = () => {
     <div>
       <Container>
         <Sidebar />
-        <div>
-          <Outlet />
-        </div>
+        <Outlet />
       </Container>
     </div>
   );
