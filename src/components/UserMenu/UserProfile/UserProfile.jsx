@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
-import s from './User.module.scss'
+import s from './User.module.scss';
 
 const UserProfile = () => {
   const { data, status } = useSelector(state => state.profile);
 
   if (!data) {
-    return;
+    return ;
   }
 
   if (!status) {
