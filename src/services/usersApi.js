@@ -1,4 +1,4 @@
-// import axios from 'axios';
+
 import { publicApi, privateApi } from 'http/http';
 
 export const createUserService = body => {

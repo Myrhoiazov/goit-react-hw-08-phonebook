@@ -8,6 +8,7 @@ import { deleteContact } from '../../redux/contacts/operations-contact';
 import Loader from 'components/Loader';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { selectAuth } from 'redux/auth/selector.auth';
 
 const ContactList = () => {
   const contacts = useSelector(selectContact);
@@ -15,10 +16,14 @@ const ContactList = () => {
   const isLoading = useSelector(state => state.contacts.isLoading);
   const dispatch = useDispatch();
 
+  const status = useSelector(selectAuth);
+
   useEffect(() => {
-    dispatch(fetchAllContact());
+    if (status) {
+      dispatch(fetchAllContact());
+    }
     // eslint-disable-next-line
-  }, []);
+  }, [dispatch, status]);
 
   const filteredContacts = contacts.filter(user =>
     user.name.toLowerCase().includes(filter.toLowerCase())

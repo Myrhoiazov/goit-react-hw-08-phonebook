@@ -12,6 +12,7 @@ export const getProfileThunk = createAsyncThunk(
       if (!auth.token) {
         return rejectWithValue();
       }
+      console.log(11111111);
       token.set(auth.token);
       return await getUserService();
     } catch {

@@ -16,7 +16,7 @@ const UserMenu = () => {
   };
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', alignItems: 'center'}}>
       <UserProfile />
       <Button type="button" variant="contained" color="error" onClick={handleLogOut}>
         Log Out

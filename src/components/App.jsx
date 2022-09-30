@@ -11,10 +11,15 @@ import Registration from '../pages/Registration';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProfileThunk } from 'redux/profile/thunk.profile.js';
 import { selectAuth } from 'redux/auth/selector.auth.js';
+import { token as tokenUrl } from 'http/http.js';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const status = useSelector(selectAuth);
+  const { token, status } = useSelector(selectAuth);
+
+  if (token !== '') {
+    tokenUrl.set(token);
+  }
 
   useEffect(() => {
     if (status) {
