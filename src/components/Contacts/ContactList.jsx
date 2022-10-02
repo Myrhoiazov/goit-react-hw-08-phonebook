@@ -1,7 +1,7 @@
 // import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import s from '../Contacts/ContactList.module.css';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { fetchAllContact } from '../../redux/contacts/operations-contact';
 import { selectContact } from 'redux/contacts/selector-contacts';
 import { deleteContact } from '../../redux/contacts/operations-contact';
@@ -22,12 +22,16 @@ const ContactList = () => {
     if (status) {
       dispatch(fetchAllContact());
     }
-    // eslint-disable-next-line
   }, [dispatch, status]);
 
-  const filteredContacts = contacts.filter(user =>
-    user.name.toLowerCase().includes(filter.toLowerCase())
-  );
+
+// useMemo - кеширует данные повторно не рендерит
+  const filteredContacts = useMemo(() => {
+    return contacts.filter(user =>
+      user.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  }, [contacts, filter]);
+
 
   if (contacts.length === 0) {
     return;

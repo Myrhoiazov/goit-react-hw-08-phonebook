@@ -4,15 +4,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from 'redux/contacts/contact-Slice';
 import { selectContact } from 'redux/contacts/selector-contacts';
 import Loader from 'components/Loader';
+import { useSearchParams } from 'react-router-dom';
 
 const FilterList = () => {
+  const [queryParams, setQueryParams] = useSearchParams();
+  const queryParam = queryParams.get('query') ?? '';
   const contacts = useSelector(selectContact);
   const filter = useSelector(state => state.contacts.filter);
   const isLoading = useSelector(state => state.contacts.isLoading);
+
   const dispatch = useDispatch();
 
   const handleFilterValue = ev => {
-    dispatch(setFilter(ev.target.value.trim()));
+    const value = ev.target.value.trim();
+
+    dispatch(setFilter(value));
+    setQueryParams(value === '' ? {} : { query: value });
   };
 
   if (contacts.length === 0) {
