@@ -1,3 +1,4 @@
+import { Avatar } from '@mui/material';
 import { useSelector } from 'react-redux';
 import s from './User.module.scss';
 
@@ -5,7 +6,7 @@ const UserProfile = () => {
   const { data, status } = useSelector(state => state.profile);
 
   if (!data) {
-    return ;
+    return <>Error</>;
   }
 
   if (!status) {
@@ -14,8 +15,14 @@ const UserProfile = () => {
 
   return (
     <div className={s.wrapper}>
-      <p className={s.title}> {data.name}</p>
-      <p className={s.text}>{data.email}</p>
+      <div>
+        <Avatar className={s.avatar}>{data.name[0].toUpperCase()}</Avatar>
+      </div>
+
+      <div>
+        <p className={s.title}> {data.name}</p>
+        <p className={s.text}>{data.email}</p>
+      </div>
     </div>
   );
 };

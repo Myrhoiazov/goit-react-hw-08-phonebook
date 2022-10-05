@@ -15,6 +15,7 @@ export const getProfileThunk = createAsyncThunk(
       token.set(auth.token);
       return await getUserService();
     } catch {
+      token.unset();
       return rejectWithValue();
     }
   }

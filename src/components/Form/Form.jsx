@@ -4,7 +4,6 @@ import { addContact } from 'redux/contacts/operations-contact';
 import s from './Form.module.css';
 import { toast } from 'react-toastify';
 import { selectContact } from 'redux/contacts/selector-contacts';
-import Loader from 'components/Loader';
 import Button from '@mui/material/Button';
 
 // const shortid = require('shortid');
@@ -14,7 +13,6 @@ const Form = () => {
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
   const contacts = useSelector(selectContact);
-  const isLoading = useSelector(state => state.contacts.isLoading);
 
   const handleChangeUser = ev => {
     const { name, value } = ev.target;
@@ -52,7 +50,6 @@ const Form = () => {
 
   return (
     <>
-      {isLoading && <Loader />}
       <form className={s.form} onSubmit={handleAddUser}>
         <label>
           <span className={s.label}>Name</span>

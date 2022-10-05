@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { getProfileThunk } from 'redux/profile/thunk.profile';
 import { loginThunk } from './thunk.auth';
 const { default: authInitialState } = require('./initial-state.auth');
 
@@ -18,6 +19,10 @@ const authSlice = createSlice({
     },
     [loginThunk.rejected]: state => {
       state.status = false;
+    },
+    [getProfileThunk.rejected]: state => {
+      state.status = false;
+      state.token = '';
     },
   },
 });

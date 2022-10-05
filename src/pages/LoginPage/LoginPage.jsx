@@ -4,12 +4,12 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from 'redux/auth/thunk.auth';
 import s from './Login.module.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const initialValue = {
     email: '',
@@ -29,7 +29,7 @@ const LoginPage = () => {
     try {
       await dispatch(loginThunk(user)).unwrap();
       setUser(initialValue);
-      navigate('/', { replace: true });
+      // navigate('/', { replace: true });
     } catch (error) {
       toast.error('Try Again');
     }

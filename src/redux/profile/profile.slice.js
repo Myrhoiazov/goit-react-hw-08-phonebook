@@ -19,6 +19,7 @@ const profileSlice = createSlice({
     [getProfileThunk.rejected]: state => {
       state.status = false;
     },
+    
     [loginThunk.fulfilled]: (state, { payload }) => {
       state.status = true;
       state.data = payload.user;
