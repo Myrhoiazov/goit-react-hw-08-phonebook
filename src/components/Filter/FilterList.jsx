@@ -8,7 +8,6 @@ import { useSearchParams } from 'react-router-dom';
 const FilterList = () => {
   const [queryParams, setQueryParams] = useSearchParams();
   const contacts = useSelector(selectContact);
-  const filter = useSelector(state => state.contacts.filter);
   const dispatch = useDispatch();
 
   const handleFilterValue = ev => {
@@ -29,7 +28,7 @@ const FilterList = () => {
         <input
           className={s.input}
           type="text"
-          value={filter.value}
+          value={queryParams.value}
           name="filter"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
