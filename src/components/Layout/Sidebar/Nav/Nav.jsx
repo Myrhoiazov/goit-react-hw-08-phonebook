@@ -12,15 +12,19 @@ const Nav = () => {
   return (
     <div className={s.wrapper}>
       <div className={s.nav}>
-        <NavLink end className={getActiveClassName} to="/">
-          <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-          HOME
-        </NavLink>
-        <NavLink className={getActiveClassName} to="/contacts">
-          <CallSharpIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-          CONTACT
-        </NavLink>
-        <UserMenu />
+        <div className={s.nav__link}>
+          <NavLink end className={getActiveClassName} to="/">
+            <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+            HOME
+          </NavLink>
+          <NavLink className={getActiveClassName} to="/contacts">
+            <CallSharpIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+            CONTACT
+          </NavLink>
+        </div>
+        <div>
+          <UserMenu />
+        </div>
       </div>
     </div>
   );
