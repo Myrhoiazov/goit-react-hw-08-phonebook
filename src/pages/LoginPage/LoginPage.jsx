@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from 'redux/auth/thunk.auth';
 import s from './Login.module.css';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const LoginPage = () => {
@@ -42,6 +42,7 @@ const LoginPage = () => {
         <label>
           <span className={s.label}>Email</span>
           <input
+            placeholder="your@email.com"
             className={s.input}
             type="email"
             name="email"
@@ -53,6 +54,7 @@ const LoginPage = () => {
         <label>
           <span className={s.label}>Password</span>
           <input
+          placeholder="......."
             className={s.input}
             type="password"
             name="password"
@@ -61,7 +63,9 @@ const LoginPage = () => {
             onChange={handleChangeUser}
           />
         </label>
-        <Link className={s.link} to="/registration">Dont have account?</Link>
+        <Link className={s.link} to="/registration">
+          Dont have account?
+        </Link>
 
         <Button
           disabled={user.email && user.password ? false : true}

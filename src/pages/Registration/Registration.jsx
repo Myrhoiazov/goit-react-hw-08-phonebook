@@ -49,6 +49,7 @@ const Registration = () => {
         <label>
           <span className={s.label}>Name</span>
           <input
+            placeholder="Ivan Ivanov"
             className={s.input}
             type="text"
             value={user.name}
@@ -62,6 +63,7 @@ const Registration = () => {
         <label>
           <span className={s.label}>Email</span>
           <input
+            placeholder="your@email.com"
             className={s.input}
             type="email"
             name="email"
@@ -73,6 +75,7 @@ const Registration = () => {
         <label>
           <span className={s.label}>Password</span>
           <input
+            placeholder="......"
             className={s.input}
             type="password"
             name="password"
