@@ -24,6 +24,10 @@
   margin-bottom: 10px;
 }
 
+.label__text:focus-within {
+  color: rgb(18, 128, 218);
+}
+
 .input {
   display: block;
   box-sizing: border-box;
@@ -37,7 +41,7 @@
   margin-bottom: 20px;
 }
 
-.input:focus{
+.input:focus {
   border: 1px solid rgb(18, 128, 218);
 }
 

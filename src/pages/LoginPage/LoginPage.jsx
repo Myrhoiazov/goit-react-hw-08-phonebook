@@ -39,9 +39,10 @@ const LoginPage = () => {
     <div className={s.wrapper}>
       {/* {isLoader && <Loader />} */}
       <form className={s.form} onSubmit={handleSubmit}>
-        <label>
+        <label htmlFor="email" className={s.label__text}>
           <span className={s.label}>Email</span>
           <input
+            id="email"
             placeholder="your@email.com"
             className={s.input}
             type="email"
@@ -51,10 +52,10 @@ const LoginPage = () => {
             onChange={handleChangeUser}
           />
         </label>
-        <label>
+        <label className={s.label__text}>
           <span className={s.label}>Password</span>
           <input
-          placeholder="......."
+            placeholder="......."
             className={s.input}
             type="password"
             name="password"

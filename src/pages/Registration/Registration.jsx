@@ -46,7 +46,7 @@ const Registration = () => {
     <div className={s.wrapper}>
       {isLoader && <Loader />}
       <form className={s.form} onSubmit={handleSubmit}>
-        <label>
+        <label className={s.label__text}>
           <span className={s.label}>Name</span>
           <input
             placeholder="Ivan Ivanov"
@@ -60,7 +60,7 @@ const Registration = () => {
             onChange={handleChangeUser}
           />
         </label>
-        <label>
+        <label className={s.label__text}>
           <span className={s.label}>Email</span>
           <input
             placeholder="your@email.com"
@@ -72,7 +72,7 @@ const Registration = () => {
             onChange={handleChangeUser}
           />
         </label>
-        <label>
+        <label className={s.label__text}>
           <span className={s.label}>Password</span>
           <input
             placeholder="......"
