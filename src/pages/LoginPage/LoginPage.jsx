@@ -3,6 +3,8 @@ import { Button } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from 'redux/auth/thunk.auth';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import s from './Login.module.css';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -17,6 +19,7 @@ const LoginPage = () => {
   };
 
   const [user, setUser] = useState(initialValue);
+  const [isType, setIsType] = useState(false);
 
   const handleChangeUser = ev => {
     const { name, value } = ev.target;
@@ -57,12 +60,25 @@ const LoginPage = () => {
           <input
             placeholder="......."
             className={s.input}
-            type="password"
+            type={isType ? 'text' : 'password'}
             name="password"
             value={user.password}
             required
             onChange={handleChangeUser}
           />
+          {isType ? (
+            <VisibilityOffIcon
+              sx={{ fontSize: 20 }}
+              className={s.icon}
+              onClick={() => setIsType(!isType)}
+            />
+          ) : (
+            <VisibilityIcon
+              sx={{ fontSize: 20 }}
+              className={s.icon}
+              onClick={() => setIsType(!isType)}
+            />
+          )}
         </label>
         <Link className={s.link} to="/registration">
           Dont have account?

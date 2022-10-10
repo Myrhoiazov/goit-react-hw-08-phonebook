@@ -3,6 +3,8 @@ import s from './Registration.module.css';
 // import Loader from 'components/Loader';
 import Button from '@mui/material/Button';
 import { createUserService } from 'services/usersApi';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { toast } from 'react-toastify';
 import { loginThunk } from 'redux/auth/thunk.auth';
 import { useDispatch } from 'react-redux';
@@ -21,6 +23,7 @@ const Registration = () => {
 
   const [user, setUser] = useState(initialValue);
   const [isLoader, setIsLoader] = useState(false);
+  const [isType, setIsType] = useState(false);
 
   const handleChangeUser = ev => {
     const { name, value } = ev.target;
@@ -77,12 +80,25 @@ const Registration = () => {
           <input
             placeholder="......"
             className={s.input}
-            type="password"
+            type={isType ? 'text' : 'password'}
             name="password"
             value={user.password}
             required
             onChange={handleChangeUser}
           />
+          {isType ? (
+            <VisibilityOffIcon
+              sx={{ fontSize: 20 }}
+              className={s.icon}
+              onClick={() => setIsType(!isType)}
+            />
+          ) : (
+            <VisibilityIcon
+              sx={{ fontSize: 20 }}
+              className={s.icon}
+              onClick={() => setIsType(!isType)}
+            />
+          )}
         </label>
         <Link className={s.link} to="/login">
           Already has account?

@@ -5,6 +5,7 @@
   justify-content: center;
 }
 .form {
+  position: relative;
   box-sizing: border-box;
 
   width: 400px;
@@ -43,6 +44,14 @@
 
 .input:focus {
   border: 1px solid rgb(18, 128, 218);
+}
+
+.icon {
+  position: absolute;
+  cursor: pointer;
+
+  top: 148px;
+  right: 40px;
 }
 
 .link {

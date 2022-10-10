@@ -7,6 +7,7 @@
 
 .form {
   box-sizing: border-box;
+  position: relative;
 
   width: 400px;
   padding: 20px;
@@ -18,7 +19,7 @@
 }
 
 .label {
-  display: inline-block;
+  display: block;
   font-size: 18px;
 
   font-weight: 500;
@@ -30,6 +31,7 @@
 }
 
 .input {
+  position: relative;
   display: block;
   box-sizing: border-box;
   width: 100%;
@@ -40,6 +42,14 @@
 
   padding: 10px;
   margin-bottom: 20px;
+}
+
+.icon {
+  position: absolute;
+  cursor: pointer;
+
+  top: 237px;
+  right: 40px;
 }
 
 .input:focus {
