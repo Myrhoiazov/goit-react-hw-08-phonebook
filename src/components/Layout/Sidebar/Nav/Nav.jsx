@@ -34,16 +34,16 @@ const Nav = () => {
           {ishowRtn ? <Button
             variant="contained"
             type="submit"
-            onClick={() => changeLanguage('ua')}
+            onClick={() => changeLanguage('en')}
           >
-            UA
+            EN
           </Button> :
           <Button
             variant="contained"
             type="submit"
-            onClick={() => changeLanguage('en')}
+            onClick={() => changeLanguage('ua')}
           >
-            EN
+            UA
           </Button>}
           </div>
           <NavLink className={getActiveClassName} to="/contacts">
