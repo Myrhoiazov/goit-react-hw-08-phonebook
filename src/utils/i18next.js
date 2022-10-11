@@ -1,10 +1,10 @@
 import i18n from 'i18next';
 import Backend from 'i18next-http-backend';
-import LanguageDetector from 'i18next-browser-languagedetector';
+import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from 'react-i18next';
 
-import translationEN from '../locales/en/enTranslation.json';
-import translationUA from '../locales/ua/uaTranslation.json';
+import translationEN from '../locales/en/translation.json';
+import translationUA from '../locales/ua/translation.json';
 
 const resources = {
   en: {
@@ -22,7 +22,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: 'ua',
+    fallbackLng: 'en',
     whitelist: ['ua', 'en'],
     debug: false,
     detection: {

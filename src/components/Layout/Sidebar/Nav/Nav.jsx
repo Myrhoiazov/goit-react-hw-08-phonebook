@@ -6,16 +6,12 @@ import UserMenu from 'components/UserMenu';
 import { useTranslation } from 'react-i18next';
 import '../../../../utils/i18next';
 import { Button } from '@mui/material';
-import { useState } from 'react';
 
 const Nav = () => {
-  const [ishowRtn, setIsShowBtn] = useState(false);
-
   const { t, i18n } = useTranslation();
+
   const changeLanguage = lang => {
     i18n.changeLanguage(lang);
-
-    setIsShowBtn(!ishowRtn);
   };
 
   const getActiveClassName = ({ isActive }) => {
@@ -31,20 +27,25 @@ const Nav = () => {
             {t('navigate.home')}
           </NavLink>
           <div className={s.btn_wrapper}>
-          {ishowRtn ? <Button
-            variant="contained"
-            type="submit"
-            onClick={() => changeLanguage('en')}
-          >
-            EN
-          </Button> :
-          <Button
-            variant="contained"
-            type="submit"
-            onClick={() => changeLanguage('ua')}
-          >
-            UA
-          </Button>}
+            {i18n.language === 'ua' && (
+              <Button
+                variant="contained"
+                type="button"
+                onClick={() => changeLanguage('en')}
+              >
+                UA
+              </Button>
+            )}
+
+            {i18n.language === 'en' && (
+              <Button
+                variant="contained"
+                type="button"
+                onClick={() => changeLanguage('ua')}
+              >
+                EN
+              </Button>
+            )}
           </div>
           <NavLink className={getActiveClassName} to="/contacts">
             <CallSharpIcon sx={{ mr: 0.5 }} fontSize="inherit" />
