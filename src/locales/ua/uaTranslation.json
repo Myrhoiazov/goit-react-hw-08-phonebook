@@ -1,0 +1,9 @@
+{
+  "navigate": {
+    "home": "ГОЛОВНА",
+    "contact": "КОТНАКТИ",
+    "login": "Вхід",
+    "registration": "Реєстрація",
+    "logout": "Вихід"
+  }
+}

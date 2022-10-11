@@ -1,0 +1,9 @@
+{
+  "navigate": {
+    "home": "HOME",
+    "contact": "CONTACT",
+    "login": "LogIn",
+    "registration": "Registration",
+    "logout": "Log Out"
+  }
+}
